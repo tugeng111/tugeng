@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tugeng.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.tugeng.model.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="classname" jdbcType="VARCHAR" property="classname" />
+    <result column="sysnum" jdbcType="VARCHAR" property="sysnum" />
+    <result column="is_teacher" jdbcType="TINYINT" property="isTeacher" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="academy" jdbcType="VARCHAR" property="academy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, classname, sysnum, is_teacher, gender, academy
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tugeng.model.User">
+    insert into t_user (id, name, classname, 
+      sysnum, is_teacher, gender, 
+      academy)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{classname,jdbcType=VARCHAR}, 
+      #{sysnum,jdbcType=VARCHAR}, #{isTeacher,jdbcType=TINYINT}, #{gender,jdbcType=TINYINT}, 
+      #{academy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tugeng.model.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="classname != null">
+        classname,
+      </if>
+      <if test="sysnum != null">
+        sysnum,
+      </if>
+      <if test="isTeacher != null">
+        is_teacher,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="academy != null">
+        academy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysnum != null">
+        #{sysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isTeacher != null">
+        #{isTeacher,jdbcType=TINYINT},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="academy != null">
+        #{academy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tugeng.model.User">
+    update t_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="classname != null">
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="sysnum != null">
+        sysnum = #{sysnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isTeacher != null">
+        is_teacher = #{isTeacher,jdbcType=TINYINT},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="academy != null">
+        academy = #{academy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tugeng.model.User">
+    update t_user
+    set name = #{name,jdbcType=CHAR},
+      classname = #{classname,jdbcType=VARCHAR},
+      sysnum = #{sysnum,jdbcType=VARCHAR},
+      is_teacher = #{isTeacher,jdbcType=TINYINT},
+      gender = #{gender,jdbcType=TINYINT},
+      academy = #{academy,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

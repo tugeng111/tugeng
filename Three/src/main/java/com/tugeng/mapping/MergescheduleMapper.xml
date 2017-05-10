@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tugeng.dao.MergescheduleMapper">
+  <resultMap id="BaseResultMap" type="com.tugeng.model.Mergeschedule">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="merge_skdx" jdbcType="VARCHAR" property="mergeSkdx" />
+    <result column="merge_kcdm" jdbcType="VARCHAR" property="mergeKcdm" />
+    <result column="merge_kcmc" jdbcType="VARCHAR" property="mergeKcmc" />
+    <result column="merge_skz" jdbcType="VARCHAR" property="mergeSkz" />
+    <result column="merge_rkls" jdbcType="VARCHAR" property="mergeRkls" />
+    <result column="merge_xueqi" jdbcType="VARCHAR" property="mergeXueqi" />
+    <result column="merge_xingqi" jdbcType="VARCHAR" property="mergeXingqi" />
+    <result column="merge_jieci" jdbcType="VARCHAR" property="mergeJieci" />
+    <result column="merge_skdd" jdbcType="VARCHAR" property="mergeSkdd" />
+    <result column="merge_skrs" jdbcType="VARCHAR" property="mergeSkrs" />
+    <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, merge_skdx, merge_kcdm, merge_kcmc, merge_skz, merge_rkls, merge_xueqi, merge_xingqi, 
+    merge_jieci, merge_skdd, merge_skrs, teacher_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_mergeschedule
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_mergeschedule
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tugeng.model.Mergeschedule">
+    insert into t_mergeschedule (id, merge_skdx, merge_kcdm, 
+      merge_kcmc, merge_skz, merge_rkls, 
+      merge_xueqi, merge_xingqi, merge_jieci, 
+      merge_skdd, merge_skrs, teacher_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{mergeSkdx,jdbcType=VARCHAR}, #{mergeKcdm,jdbcType=VARCHAR}, 
+      #{mergeKcmc,jdbcType=VARCHAR}, #{mergeSkz,jdbcType=VARCHAR}, #{mergeRkls,jdbcType=VARCHAR}, 
+      #{mergeXueqi,jdbcType=VARCHAR}, #{mergeXingqi,jdbcType=VARCHAR}, #{mergeJieci,jdbcType=VARCHAR}, 
+      #{mergeSkdd,jdbcType=VARCHAR}, #{mergeSkrs,jdbcType=VARCHAR}, #{teacherId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tugeng.model.Mergeschedule">
+    insert into t_mergeschedule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mergeSkdx != null">
+        merge_skdx,
+      </if>
+      <if test="mergeKcdm != null">
+        merge_kcdm,
+      </if>
+      <if test="mergeKcmc != null">
+        merge_kcmc,
+      </if>
+      <if test="mergeSkz != null">
+        merge_skz,
+      </if>
+      <if test="mergeRkls != null">
+        merge_rkls,
+      </if>
+      <if test="mergeXueqi != null">
+        merge_xueqi,
+      </if>
+      <if test="mergeXingqi != null">
+        merge_xingqi,
+      </if>
+      <if test="mergeJieci != null">
+        merge_jieci,
+      </if>
+      <if test="mergeSkdd != null">
+        merge_skdd,
+      </if>
+      <if test="mergeSkrs != null">
+        merge_skrs,
+      </if>
+      <if test="teacherId != null">
+        teacher_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mergeSkdx != null">
+        #{mergeSkdx,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeKcdm != null">
+        #{mergeKcdm,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeKcmc != null">
+        #{mergeKcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkz != null">
+        #{mergeSkz,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeRkls != null">
+        #{mergeRkls,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeXueqi != null">
+        #{mergeXueqi,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeXingqi != null">
+        #{mergeXingqi,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeJieci != null">
+        #{mergeJieci,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkdd != null">
+        #{mergeSkdd,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkrs != null">
+        #{mergeSkrs,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        #{teacherId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tugeng.model.Mergeschedule">
+    update t_mergeschedule
+    <set>
+      <if test="mergeSkdx != null">
+        merge_skdx = #{mergeSkdx,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeKcdm != null">
+        merge_kcdm = #{mergeKcdm,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeKcmc != null">
+        merge_kcmc = #{mergeKcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkz != null">
+        merge_skz = #{mergeSkz,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeRkls != null">
+        merge_rkls = #{mergeRkls,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeXueqi != null">
+        merge_xueqi = #{mergeXueqi,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeXingqi != null">
+        merge_xingqi = #{mergeXingqi,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeJieci != null">
+        merge_jieci = #{mergeJieci,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkdd != null">
+        merge_skdd = #{mergeSkdd,jdbcType=VARCHAR},
+      </if>
+      <if test="mergeSkrs != null">
+        merge_skrs = #{mergeSkrs,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherId != null">
+        teacher_id = #{teacherId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tugeng.model.Mergeschedule">
+    update t_mergeschedule
+    set merge_skdx = #{mergeSkdx,jdbcType=VARCHAR},
+      merge_kcdm = #{mergeKcdm,jdbcType=VARCHAR},
+      merge_kcmc = #{mergeKcmc,jdbcType=VARCHAR},
+      merge_skz = #{mergeSkz,jdbcType=VARCHAR},
+      merge_rkls = #{mergeRkls,jdbcType=VARCHAR},
+      merge_xueqi = #{mergeXueqi,jdbcType=VARCHAR},
+      merge_xingqi = #{mergeXingqi,jdbcType=VARCHAR},
+      merge_jieci = #{mergeJieci,jdbcType=VARCHAR},
+      merge_skdd = #{mergeSkdd,jdbcType=VARCHAR},
+      merge_skrs = #{mergeSkrs,jdbcType=VARCHAR},
+      teacher_id = #{teacherId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
